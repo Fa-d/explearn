@@ -3,7 +3,7 @@ import 'package:explearn/fragments/Questionaire.dart';
 import 'package:flutter/material.dart';
 
 import 'fragments/AskFragment.dart';
-import 'fragments/StudyFragment.dart';
+import 'ui/StudyFragment.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
@@ -13,30 +13,66 @@ class MyDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Center(
-              child: Column(
-                children: [
-                  Text('Your profile'),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.deepOrange,
+                    shape: BoxShape.circle,
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                          color: Colors.black54,
+                          blurRadius: 10.0,
+                          offset: Offset(0.0, 0.5))
+                    ],
                   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Icon(Icons.house_rounded),
+                  child: IconButton(
+                      icon: Icon(Icons.backspace_outlined),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      }),
+                ),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.pinkAccent,
+                      shape: BoxShape.circle,
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            color: Colors.black54,
+                            blurRadius: 10.0,
+                            offset: Offset(0.0, 0.75))
+                      ],
+                    ),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Icon(Icons.house_rounded),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                          ),
+                          Text('Your name'),
+                        ],
+                      ),
+                    ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10),
-                  ),
-                  Text('Your name'),
-                ],
-              ),
+                ),
+              ],
             ),
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
           ),
           ListTile(
-            trailing: Icon(Icons.recent_actors),
+            leading: Icon(Icons.recent_actors),
             title: Text('Study'),
             onTap: () {
               Navigator.push(
@@ -45,8 +81,9 @@ class MyDrawer extends StatelessWidget {
               );
             },
           ),
+          Divider(),
           ListTile(
-            trailing: Icon(Icons.connect_without_contact),
+            leading: Icon(Icons.connect_without_contact),
             title: Text('Ask'),
             onTap: () {
               Navigator.push(
@@ -55,8 +92,9 @@ class MyDrawer extends StatelessWidget {
               );
             },
           ),
+          Divider(),
           ListTile(
-            trailing: Icon(Icons.ac_unit),
+            leading: Icon(Icons.ac_unit),
             title: Text('Current Rank'),
             onTap: () {
               Navigator.push(
@@ -66,8 +104,9 @@ class MyDrawer extends StatelessWidget {
               );
             },
           ),
+          Divider(),
           ListTile(
-            trailing: Icon(Icons.book_outlined),
+            leading: Icon(Icons.book_outlined),
             title: Text('Questionnaire'),
             onTap: () {
               Navigator.push(
