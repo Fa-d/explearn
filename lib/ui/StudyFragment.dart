@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'overall/mathematics.dart';
 import 'overall/overall.dart';
 
 class StudyFragment extends StatefulWidget {
@@ -62,7 +63,7 @@ class _StudyFragmentState extends State<StudyFragment> {
           body: TabBarView(
             children: [
               overall(),
-              Icon(Icons.directions_transit),
+              something(),
               Icon(Icons.directions_bike),
               Icon(Icons.directions_bike),
               Icon(Icons.directions_car),

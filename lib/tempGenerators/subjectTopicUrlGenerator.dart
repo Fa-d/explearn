@@ -1,33 +1,19 @@
-import 'dart:convert';
+class Photo {
+  final int albumId;
+  final int id;
+  final String title;
+  final String url;
+  final String thumbnailUrl;
 
-subtopicurlGen welcomeFromJson(String str) => subtopicurlGen.fromJson(json.decode(str));
+  Photo({this.albumId, this.id, this.title, this.url, this.thumbnailUrl});
 
-String welcomeToJson(subtopicurlGen data) => json.encode(data.toJson());
-
-class subtopicurlGen {
-  subtopicurlGen({
-    this.subjectName,
-    this.topicName,
-    this.url,
-    this.toIntent,
-  });
-
-  String subjectName;
-  String topicName;
-  String url;
-  String toIntent;
-
-  factory subtopicurlGen.fromJson(Map<String, dynamic> json) => subtopicurlGen(
-    subjectName: json["subjectName"],
-    topicName: json["topicName"],
-    url: json["url"],
-    toIntent: json["to_intent"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "subjectName": subjectName,
-    "topicName": topicName,
-    "url": url,
-    "to_intent": toIntent,
-  };
+  factory Photo.fromJson(Map<String, dynamic> json) {
+    return Photo(
+      albumId: json['albumId'] as int,
+      id: json['id'] as int,
+      title: json['title'] as String,
+      url: json['url'] as String,
+      thumbnailUrl: json['thumbnailUrl'] as String,
+    );
+  }
 }
