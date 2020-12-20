@@ -18,7 +18,6 @@ class _overallState extends State<overall> {
         future: fetchPhotos(http.Client()),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
-
           return snapshot.hasData
               ? PhotoList(photos: snapshot.data)
               : Center(child: CircularProgressIndicator());
@@ -30,14 +29,12 @@ class _overallState extends State<overall> {
 
 class PhotoList extends StatelessWidget {
   List<Photo> photos;
-
   PhotoList({Key key, this.photos}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        gridDelegate:
-        SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+    return ListView.builder(
+      itemCount: photos.length,
         itemBuilder: (context, index) {
           return Image.network(photos[index].thumbnailUrl);
         });
